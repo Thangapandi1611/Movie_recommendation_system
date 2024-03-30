@@ -33,8 +33,8 @@ background-attachment: local;
 st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.header("**:white[CONTENT BASED MOVIE RECOMMENDATION]**")
-movies = pickle.load(open('movie_list.pkl','rb'))
-similarity = pickle.load(open('similarity.pkl','rb'))
+movies = pickle.load(open('Desktop/pkl/movie_list.pkl','rb'))
+similarity = pickle.load(open('Desktop/pkl/similarity.pkl','rb'))
 
 movie_list = movies['Name'].values
 selected_movie = st.selectbox(
