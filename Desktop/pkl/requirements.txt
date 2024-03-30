@@ -1,4 +1,3 @@
 ### dependency
 streamlit
-pickle
-requests
+
