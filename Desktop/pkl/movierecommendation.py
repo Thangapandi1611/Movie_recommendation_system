@@ -153,11 +153,25 @@ Final_data.to_csv('Final_data.csv')
 
 Final_data[Final_data['Name'] == 'Citizen Kane'].index[0]
 
+#Recommendation system
+import matplotlib.pyplot as plt
 def recommend(movie):
     index = Final_data[Final_data['Name'] == movie].index[0]
     distances = sorted(list(enumerate(similarity[index])),reverse=True,key = lambda x: x[1])
+    recommended_movies = []
+    distances_values = []
     for i in distances[1:6]:
+        recommended_movies.append(Final_data.iloc[i[0]].Name)
+        distances_values.append(i[1])
         print(Final_data.iloc[i[0]].Name,Final_data.iloc[i[0]].Year,Final_data.iloc[i[0]].Rating)
+    plt.figure(figsize=(8, 6))
+    plt.scatter(recommended_movies, distances_values, color='blue')
+    plt.title('Distances of Recommended Movies from {}'.format(movie))
+    plt.xlabel('Recommended Movies')
+    plt.ylabel('Cosine Similarity Distance')
+    plt.xticks(rotation=45, ha='right')
+    plt.tight_layout()
+    plt.show()
 
 recommend("It's a Wonderful Life")
 
